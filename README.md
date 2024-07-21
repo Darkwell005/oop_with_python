@@ -2,6 +2,10 @@
 
 _Markdown-разметка_
 
+## Теория
+
+- [Smartiqa](https://smartiqa.ru/courses/python/lesson-6)
+
 
 ---
 
