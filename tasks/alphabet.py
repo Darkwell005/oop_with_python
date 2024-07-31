@@ -22,19 +22,19 @@ class EngAlphabet(Alphabet):
         # Alphabet.__init__(self, "En", string.ascii_uppercase)
 
     def is_en_letter(self, letter: str) -> bool:
-        return letter in self.letters
+        return letter.upper() in self.letters
 
     def letters_num(self) -> int:
         return self.__letters_num
 
     @staticmethod
     def example() -> str:
-        return "HELLO"
+        return "The quick brown fox jumps over the lazy dog"
 
 
 if __name__ == "__main__":
     eng = EngAlphabet()
     print(eng.letters_num())
-    print(eng.is_en_letter("F".upper()))
-    print(eng.is_en_letter("Щ".upper()))
+    print(eng.is_en_letter("F"))
+    print(eng.is_en_letter("щ"))
     EngAlphabet.example()
