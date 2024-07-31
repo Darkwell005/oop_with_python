@@ -2,39 +2,39 @@ import string
 
 
 class Alphabet:
-    def __init__(self, lang: str, letters: str):
+    def __init__(self, lang: str, letters: str) -> None:
         self.lang = lang
         self.letters = letters
         print(letters)
 
-    # TODO: 1. Пункт 3: Создайте метод print(),
-    #  который выведет в консоль буквы алфавита
+    def print(self) -> None:
+        print(self.letters)
 
-    def letters_num(self):
+    def letters_num(self) -> int:
         return len(self.letters)
 
 
 class EngAlphabet(Alphabet):
     __letters_num = len(string.ascii_uppercase)
 
-    def __init__(self):
+    def __init__(self) -> None:
         super().__init__("En", string.ascii_uppercase)
         # Alphabet.__init__(self, "En", string.ascii_uppercase)
 
-    def is_en_letter(self, letter: str):
+    def is_en_letter(self, letter: str) -> bool:
         return letter in self.letters
 
-    def letters_num(self):
+    def letters_num(self) -> int:
         return self.__letters_num
 
     @staticmethod
-    def example():
+    def example() -> str:
         return "HELLO"
 
 
 if __name__ == "__main__":
     eng = EngAlphabet()
     print(eng.letters_num())
-    print(eng.is_en_letter("F"))
-    print(eng.is_en_letter("Щ"))
+    print(eng.is_en_letter("F".upper()))
+    print(eng.is_en_letter("Щ".upper()))
     EngAlphabet.example()
