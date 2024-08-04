@@ -1,3 +1,6 @@
+from pprint import pprint
+
+
 class Tomato:
     states: dict[int, str] = {
         0: "Отсутствует",
@@ -9,14 +12,19 @@ class Tomato:
     def __init__(self, index: int) -> None:
         self._index = index
         self.__count = 0
-        self._state = self.states[self.__count]
+        self._state = self.states[0]
 
     def grow(self) -> None:
-        self.__count += 1
-        self._state = self.states[self.__count]
+        if not self.is_ripe():
+            self.__count += 1
+            self._state = self.states[self.__count]
 
     def is_ripe(self) -> bool:
-        return self._state == self.states[3]
+        return self.__count == (len(self.states) - 1)
+        # return self._state == self.states[len(self.states) - 1]
+
+    def get_index(self) -> int:
+        return self._index
 
 
 class TomatoBush:
@@ -24,16 +32,33 @@ class TomatoBush:
         self.tomatoes: list[Tomato] = [
             Tomato(i) for i in range(quantity)
         ]
+        # pprint(self.tomatoes)
 
-    def graw_all(self):
+    def find(self, target: int) -> bool:
         for tomato in self.tomatoes:
-            tomato.grow()
+            if tomato.get_index() == target:
+                return True
+        return False
 
-    def all_are_ripe(self):
-        pass
+    def remove(self, target: int) -> None:
+        self.tomatoes = [
+            tomato for tomato in self.tomatoes
+            if tomato.get_index() != target
+        ]
+
+    def grow_all(self) -> None:
+        # for tomato in self.tomatoes:
+        #     tomato.grow()
+        [tomato.grow() for tomato in self.tomatoes]
+
+    def all_are_ripe(self) -> bool:
+        return all(
+            [tomato.is_ripe() for tomato in self.tomatoes]
+        )
 
     def give_away_all(self) -> None:
-        pass
+        if self.all_are_ripe():
+            self.tomatoes.clear()
 
 
 class Gardener:
@@ -42,15 +67,28 @@ class Gardener:
         self._plant = plant
 
     def work(self):
-        # self._plant.tomatoes
-        pass
+        self._plant.grow_all()
 
     def harvest(self):
-        pass
+        if self._plant.all_are_ripe():
+            self._plant.give_away_all()
+        else:
+            print("Не все помидоры созрели...")
 
     @staticmethod
     def knowledge_base() -> None:
-        pass
+        print(
+            """
+            1. Установка живой изгороди и забора
+                Живая изгородь в саду
+            2. Установка газона в саду
+            3. Посадка деревьев и кустарников
+            """
+        )
 
 
-
+if __name__ == "__main__":
+    tb = TomatoBush(5)
+    # tb.remove(3)
+    # print(tb.find(3))
+    Gardener.knowledge_base()
