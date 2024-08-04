@@ -2,6 +2,8 @@ class Tomato:
     states: dict[int, str] = {
         0: "Отсутствует",
         1: "Цветение",
+        2: "Зеленый",
+        3: "Красный"
     }
 
     def __init__(self, index: int) -> None:
@@ -9,11 +11,12 @@ class Tomato:
         self.__count = 0
         self._state = self.states[self.__count]
 
-    def grow(self):
-        pass
+    def grow(self) -> None:
+        self.__count += 1
+        self._state = self.states[self.__count]
 
     def is_ripe(self) -> bool:
-        pass
+        return self._state == self.states[3]
 
 
 class TomatoBush:
@@ -26,7 +29,7 @@ class TomatoBush:
         for tomato in self.tomatoes:
             tomato.grow()
 
-    def all_are_ripe(self) -> bool:
+    def all_are_ripe(self):
         pass
 
     def give_away_all(self) -> None:
@@ -48,3 +51,6 @@ class Gardener:
     @staticmethod
     def knowledge_base() -> None:
         pass
+
+
+
