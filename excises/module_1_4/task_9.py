@@ -1,7 +1,5 @@
 import sys
 
-lst_in = list(map(str.strip, sys.stdin.readlines()))
-
 
 class DataBase:
     lst_data = []
@@ -13,4 +11,7 @@ class DataBase:
 
     def select(self, a, b):
         return self.lst_data[a:b + 1]
-    
+
+
+if __name__ == "__main__":
+    lst_in = list(map(str.strip, sys.stdin.readlines()))
