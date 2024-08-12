@@ -3,15 +3,15 @@ from copy import deepcopy
 
 class Graph:
     def __init__(self):
-        self.__local_data: list = []
+        self.__data: list = []
         self.__is_show: bool = True
 
     def set_data(self, data: list) -> None:
-        self.__local_data = data.copy()
+        self.__data = data.copy()
 
     def show_table(self) -> str:
         if not self.__is_show_data():
-            return " ".join(map(str, self.__local_data))
+            return " ".join(map(str, self.__data))
 
     def show_graph(self):
         if not self.__is_show_data():
