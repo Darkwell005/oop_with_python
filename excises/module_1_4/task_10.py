@@ -5,21 +5,20 @@ class Translator:
     def add(self, eng: str, rus: str) -> None:
         if "data" not in self.__dict__:
             self.data = {}
-        self.data.setdefault(eng, [])
-        if rus not in self.data[eng]:
+        self.data.setdefault(eng.lower(), [])
+        if rus.lower() not in self.data[eng.lower()]:
             self.data[eng].append(rus)
 
     def remove(self, eng) -> None:
-        if eng in self.data:
+        if eng.lower() in self.data:
             self.data.pop(eng)
 
     def translate(self, eng) -> dict:
         pprint(self.data)
-        return self.data.get(eng, ["Ключ не найден"])
+        return self.data.get(eng.lower(), ["Ключ не найден"])
 
 
 if __name__ == '__main__':
-    # TODO: Данные в БД должны быть в едином виде
 
     tr = Translator()
     tr.add("tree", "дерево")
