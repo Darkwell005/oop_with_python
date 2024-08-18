@@ -1,10 +1,13 @@
+from pprint import pprint
+
+
 class Product:
     def __init__(self, name: str, price: int):
         self.name = name
         self.price = price
 
     def __str__(self) -> str:
-        return ": ".join([str(x) for x in [self.name, self.price]])
+        return f"{self.name}: {self.price}"
 
 
 class Cart:
@@ -17,10 +20,11 @@ class Cart:
     def remove(self, indx: int):
         self.goods.pop(indx)
 
-    def get_list(self):
+    def get_list(self) -> list[str]:
+        result: list[str] = []
         for item in self.goods:
-            for value in item:
-                print(value)
+            result.append(f"{item.name}: {item.price}")
+        return result
 
 
 class Table(Product):
@@ -39,13 +43,17 @@ class Cup(Product):
     pass
 
 
-gd = (
-    TV("Lenovo", 11000), TV("Samsung", 15000),
-    Table("Console", 5000), NoteBook("Linux", 120000),
-    NoteBook("Gigabyte", 100000)
+products: tuple[Product, ...] = (
+    TV("Lenovo", 11000),
+    TV("Samsung", 15000),
+    Table("Console", 5000),
+    NoteBook("Linux", 120000),
+    NoteBook("Gigabyte", 100000),
+    Cup("Coffee", 100)
 )
 
 cart = Cart()
-cart.add(gd)
+for product in products:
+    cart.add(product)
 
-cart.get_list()
+pprint(cart.get_list())

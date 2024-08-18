@@ -4,7 +4,7 @@ class CPU:
         self.fr = fr
 
     def __str__(self):
-        return ", ".join([str(x) for x in [self.name, self.fr]])
+        return f"{self.name}, {self.fr}"
 
 
 class Memory:
@@ -20,16 +20,14 @@ class MotherBoard:
         self.__total_mem_slots = 4
         self.mem_slots: list['Memory'] = list(mem_slots[:self.__total_mem_slots])
 
-    def _some_method(self) -> str:
+    def _get_mem_slots(self) -> str:
         return '; '.join(f"{item.name} - {item.volume}" for item in self.mem_slots)
 
     def get_config(self) -> str:
         return (f"Материнская плата: {self.name}, "
                 f"\nЦентральный процессор: {self.cpu}, "
                 f"\nСлотов памяти: {self.__total_mem_slots}, "
-                f"\nПамять: {self._some_method()}"
-
-                )
+                f"\nПамять: {self._get_mem_slots()}")
 
 
 cp = CPU("Intel Core i5", 3000)
