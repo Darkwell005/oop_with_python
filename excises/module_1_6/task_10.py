@@ -1,13 +1,13 @@
 class Factory:
-    def build_sequence(self):
+    def build_sequence(self) -> list:
         return []
 
-    def build_number(self, string):
+    def build_number(self, string: str) -> float:
         return float(string)
 
 
 class Loader:
-    def parse_format(self, string: str, factory: "Factory"):
+    def parse_format(self, string: str, factory: "Factory") -> list[float]:
         seq = factory.build_sequence()
         for sub in string.split(", "):
             item = factory.build_number(sub)

@@ -4,3 +4,4 @@ class AbstractCLass:
 
 
 obj = AbstractCLass()
+print(obj)
