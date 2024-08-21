@@ -8,15 +8,24 @@ class ListObject:
 
     def link(self, obj: 'ListObject'):
         self._next_obj = obj
-        print(obj._next_obj)
+        # print(obj._next_obj)
 
-
+    def __repr__(self):
+        return self._data
 
 
 if __name__ == "__main__":
     lst_in = list(map(str.strip, sys.stdin.readlines()))
-    head_obj = ListObject("hello")
-    second_obj = ListObject("world")
-    head_obj.link(second_obj)
-    print(head_obj._next_obj)
-    print(second_obj)
+    # lst_in = ["10", "20", "30", "40"]
+    if lst_in:
+        first, *others = lst_in
+        # first = list[0]
+        # others = list[1:]
+        head = ListObject(first)
+        prev = head
+        for value in others:
+            obj = ListObject(value)
+            prev.link(obj)
+            prev = obj
+    else:
+        print("Введите что-нибудь")
