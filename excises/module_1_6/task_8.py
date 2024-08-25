@@ -10,31 +10,26 @@ class DialogLinux:
 
 
 class Dialog:
-    __OS: [int, object] = {
-        1: DialogWindows,
-        2: DialogLinux
-    }
-
     def __new__(cls, *args, **kwargs):
-        first, *_ = args
-        # TODO:
-        _class: object = cls.__OS.get(TYPE_OS)
-        instance = super().__new__(_class)
-        instance.name = first
-        print(args, kwargs)
-        return instance
+        some_obj = None
 
-    def __init__(self, name: str) -> None:
-        self.name = name
+        if TYPE_OS == 1:
+            some_obj = super().__new__(DialogWindows)
+        elif TYPE_OS == 2:
+            some_obj = super().__new__(DialogLinux)
+        some_obj.name = args[0]
+        return some_obj
+
+
 
 
 if __name__ == "__main__":
     dlg = Dialog("DialogWindows")
     print(type(dlg))
-    print(dlg.name)
+    print(dlg)
 
     print('-----------------------')
-    TYPE_OS = 1
+    TYPE_OS = 2
     dlg2 = Dialog("DialogLinux")
     print(type(dlg2))
-    print(dlg2.name)
+    print(dlg2)
