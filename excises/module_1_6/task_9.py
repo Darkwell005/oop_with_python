@@ -3,7 +3,7 @@ class Point:
         self.x = x
         self.y = y
 
-    def clone(self):
+    def clone(self) -> 'Point':
         return Point(self.x, self.y)
 
 

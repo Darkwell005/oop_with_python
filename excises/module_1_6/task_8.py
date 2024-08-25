@@ -21,8 +21,6 @@ class Dialog:
         return some_obj
 
 
-
-
 if __name__ == "__main__":
     dlg = Dialog("DialogWindows")
     print(type(dlg))
