@@ -1,47 +1,39 @@
+import string
 from string import ascii_lowercase
 
 
 class BaseInput:
-    digit = "0123456789"  # TODO: 1. Используйте digits из string
+    digit = string.digits
     CHARS = "абвгдеёжзийклмнопрстуфхцчшщьыъэюя" + ascii_lowercase
     CHARS_CORRECT = CHARS + CHARS.upper() + digit
 
     @classmethod
-    def check_name(cls, name: str):
-        # TODO: 2. Можно улучшить
-        if (3 <= len(name) < 50) and name in cls.CHARS_CORRECT:
-            pass
-        else:
+    def check_name(cls, name: str) -> None:
+        length = len(name)
+        if not (3 <= length < 50 and name in cls.CHARS_CORRECT):
             raise ValueError("Некорректное поле name")
 
     def __init__(self, name: str, size: int = 10):
         self.name = name
         self.size = size
 
-    def get_html(self):
-        # TODO: 3. Как работают эти проверки?
-        #  Может в каждом дочерним классе реализовать этот метод?
-        if TextInput:
-            return f"<p class='login'>{self.name}: <input type='text' size={self.size} />"
-        elif PasswordInput:
-            return f"<p class='password'>{self.name}: <input type='text' size={self.size} />"
-
 
 class TextInput(BaseInput):
-    pass
+    def get_html(self) -> str:
+        return f"<p class='login'>{self.name}: <input type='text' size={self.size} />"
 
 
 class PasswordInput(BaseInput):
-    pass
+    def get_html(self) -> str:
+        return f"<p class='password'>{self.name}: <input type='text' size={self.size} />"
 
 
 class FormLogin:
-    # TODO: 4. Нужны аннотации
-    def __init__(self, lgn, psw):
+    def __init__(self, lgn: "TextInput", psw: "PasswordInput"):
         self.login = lgn
         self.password = psw
 
-    def render_template(self):
+    def render_template(self) -> str:
         return "\n".join(['<form action="#">', self.login.get_html(), self.password.get_html(), '</form>'])
 
 
