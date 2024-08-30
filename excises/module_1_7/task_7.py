@@ -3,22 +3,30 @@ from string import ascii_lowercase
 
 
 class BaseInput:
+    # TODO: 1. Может сделать полей приватными? Также добавьте аннотации.
     digit = string.digits
-    CHARS = "абвгдеёжзийклмнопрстуфхцчшщьыъэюя" + ascii_lowercase
+    cyrillic = "абвгдеёжзийклмнопрстуфхцчшщьыъэюя"
+    CHARS = cyrillic + ascii_lowercase
     CHARS_CORRECT = CHARS + CHARS.upper() + digit
 
     @classmethod
     def check_name(cls, name: str) -> None:
         length = len(name)
-        if not (3 <= length < 50 and name in cls.CHARS_CORRECT):
+        name_min_length: int = 3
+        name_max_length: int = 50
+        if not (name_min_length <= length < name_max_length
+                and name in cls.CHARS_CORRECT):
             raise ValueError("Некорректное поле name")
 
+    # TODO: 2. Инициализатор пишется сразу после полей класса
     def __init__(self, name: str, size: int = 10):
         self.name = name
         self.size = size
 
 
 class TextInput(BaseInput):
+    # TODO: 3. Количество символов в строке первышает > 79
+
     def get_html(self) -> str:
         return f"<p class='login'>{self.name}: <input type='text' size={self.size} />"
 
