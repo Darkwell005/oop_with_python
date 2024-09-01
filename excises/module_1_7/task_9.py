@@ -20,8 +20,12 @@ class YouTube:
 
     @classmethod
     def play(cls, video_indx):
-        pass  # Что делать дальше не понимаю
+        # TODO: 1. Нужно дастать видео из videos и
+        #  вызвать у видео метод play()
+        pass
 
+
+# INFO: Не забывайте аннотации
 
 v1 = Video()
 v2 = Video()

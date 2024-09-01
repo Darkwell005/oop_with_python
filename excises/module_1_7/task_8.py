@@ -3,15 +3,16 @@ import string
 
 class CardCheck:
     __digits: str = string.digits
-    __ascii_lowercase: str = string.ascii_uppercase
-    __CHARS_FOR_NAME: str = __ascii_lowercase + __digits
+    __ascii_uppercase: str = string.ascii_uppercase
+    __CHARS_FOR_NAME: str = __ascii_uppercase + __digits
 
     @staticmethod
     def check_card_number(number: str) -> bool:
-        return (number.count("-") == 3
-                and number.replace("-", "").isdigit()
-                and all(
-            [len(x) == 4 for x in number.split("-")]))
+        return (
+            number.count("-") == 3
+            and number.replace("-", "").isdigit()
+            and all([len(x) == 4 for x in number.split("-")])
+        )
 
     @classmethod
     def check_name(cls, name) -> bool:

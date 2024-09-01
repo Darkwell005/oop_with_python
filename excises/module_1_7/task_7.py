@@ -1,11 +1,10 @@
 import string
-from string import ascii_lowercase
 
 
 class BaseInput:
     __digit: str = string.digits
     __cyrillic: str = "абвгдеёжзийклмнопрстуфхцчшщьыъэюя"
-    __CHARS: str = __cyrillic + ascii_lowercase
+    __CHARS: str = __cyrillic + string.ascii_lowercase
     __CHARS_CORRECT: str = __CHARS + __CHARS.upper() + __digit
 
     def __init__(self, name: str, size: int = 10):
