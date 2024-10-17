@@ -16,13 +16,10 @@ class YouTube:
     @classmethod
     def add_video(cls, video: "Video"):
         cls.videos.append(video)
-        print(cls.videos)
 
     @classmethod
-    def play(cls, video_indx):
-        # TODO: 1. Нужно дастать видео из videos и
-        #  вызвать у видео метод play()
-        pass
+    def play(cls, video_indx: int):
+        cls.videos[video_indx].play()
 
 
 # INFO: Не забывайте аннотации
@@ -33,3 +30,4 @@ v1.create("Python")
 v2.create("Python OOП")
 YouTube.add_video(v1)
 YouTube.add_video(v2)
+YouTube.play(0)
