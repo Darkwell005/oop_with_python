@@ -1,5 +1,7 @@
 import sys
 
+from oop_principes import Hou
+
 # Потоковый ввод/вывод.
 #           stdin/stdout
 

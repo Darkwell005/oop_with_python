@@ -1,5 +1,12 @@
 from abc import abstractmethod, ABC
 
+__all__ = [
+    "House",
+    "SmallHouse",
+    "LargeHouse",
+    "MediumHouse"
+]
+
 
 class BaseHouse(ABC):  # Родительский класс
     """Абстрактный класс."""

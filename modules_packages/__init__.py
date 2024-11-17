@@ -1,0 +1,1 @@
+from .work_module_and_package import BITS_PER_MEGABYTE

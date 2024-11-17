@@ -1,3 +1,8 @@
+# from modules_packages.work_module_and_package.task_4 import BITS_PER_MEGABYTE
+# from modules_packages.work_module_and_package import BITS_PER_MEGABYTE
+from modules_packages import BITS_PER_MEGABYTE
+
+
 # Example
 class Math:
 
@@ -15,3 +20,5 @@ if __name__ == '__main__':
     Math.sqrt(16)
     mt = Math()
     mt.sqrt(25)
+
+    print(BITS_PER_MEGABYTE)
